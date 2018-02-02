@@ -25,8 +25,16 @@ bot.onText(/\/news/, (msg, match) => {
     match = JSON.parse(result.body); // "Stuff worked!"
     const chatId = msg.chat.id;
     console.log(match.articles[0])
+    for (i in match.articles){
+        bot.sendMessage(chatId, 
+`${match.articles[i].title}
+${match.articles[i].description} 
+${match.articles[i].url}
+@DeezyDoge 
+`);
+    }
         // send a message to the chat acknowledging receipt of their message
-        //   bot.sendMessage(chatId, match.body['articles'][0]);
+
     }, function(err) {
         console.log(err); // Error: "It broke"
     });
@@ -38,5 +46,5 @@ bot.on('message', (msg) => {
   const chatId = msg.chat.id;
 
   // send a message to the chat acknowledging receipt of their message
-  bot.sendMessage(chatId, 'Todays news');
+  bot.sendMessage(chatId, '-----Todays news----');
 });
